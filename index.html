@@ -36,7 +36,6 @@
         console.log("Email: " + user.email);
         //console.log("Encoded JWT ID token: " + response.credential);
         */
-        google.accounts.id.disableAutoSelect();
 
       }
       window.onload = function () {
@@ -50,9 +49,9 @@
           
         );
         //google.accounts.id.prompt(); //1 Tap dialog
-        google.accounts.id.disableAutoSelect();
-
-
+        document.getElementById('button-sign-out').addEventListener('click', function() {
+          google.accounts.id.disableAutoSelect();
+        })
         
       }
     </script>
