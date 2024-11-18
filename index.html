@@ -24,7 +24,8 @@
         google.accounts.id.disableAutoSelect();
       }
       function handleCredentialResponse(response) {
-        console.table(JSON.stringify(parseJwt(response.credential)));
+        var user = JSON.stringify(parseJwt(response.credential));
+        console.table(user);
         /*
         const user = decodeJwtResponse(response.credential);
         console.log("ID: " + user.sub);
