@@ -24,7 +24,7 @@
         google.accounts.id.disableAutoSelect();
       }
       function handleCredentialResponse(response) {
-        console.table(JSON.stringify(parseJwt(response.credential)));
+        console.log(JSON.stringify(parseJwt(response.credential)));
         /*
         const user = decodeJwtResponse(response.credential);
         console.log("ID: " + user.sub);
@@ -46,7 +46,7 @@
           { theme: "outline", size: "large", locale: "en" }
           
         );
-        google.accounts.id.prompt(); //1 Tap dialog
+        //google.accounts.id.prompt(); //1 Tap dialog
 
         
       }
