@@ -24,8 +24,9 @@ let appStart = function() {
 
 
 let initSignInV2 = function() {
+  //    client_id: '177667034415-t8vqvkre632s7lvpr6edfjilgbm0m3vb.apps.googleusercontent.com',
   auth2 = gapi.auth2.init({
-    client_id: '177667034415-t8vqvkre632s7lvpr6edfjilgbm0m3vb.apps.googleusercontent.com',
+    client_id: '466272244345-s4jrd53gjj2f00achc2vlf2lvk5b6nm8.apps.googleusercontent.com',
     scope: 'profile'
   })
 
