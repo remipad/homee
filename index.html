@@ -7,7 +7,7 @@
   <style>
   #btnLogout {
     font-family: 'Roboto', arial, sans-serif;
-    display: inline-block;
+    //display: inline-block;
     justify-content: center;
     font-size: 16px;
     width: 240px;
@@ -62,12 +62,16 @@
       console.log('Google SignedOut');
       google.accounts.id.disableAutoSelect();
       google.accounts.id.prompt(); 
-      document.getElementById('btnLogin').style.display = 'none'
+      document.getElementById('btnLogin').style.display = 'block';
+      document.getElementById('btnLogout').style.display = 'none';
+
     }
 
     function onGoogleSignIn(response) {
       var user = JSON.stringify(parseJwt(response.credential));
-      document.getElementById('btnLogin').style.display = 'block'
+      document.getElementById('btnLogout').style.display = 'block'
+      document.getElementById('btnLogin').style.display = 'none'
+
       console.log(user);
       /*
       const user = decodeJwtResponse(response.credential);
