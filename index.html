@@ -63,7 +63,7 @@
     }
     function handleCredentialResponse(response) {
       var user = JSON.stringify(parseJwt(response.credential));
-      console.table(user);
+      console.log(user);
       /*
       const user = decodeJwtResponse(response.credential);
       console.log("ID: " + user.sub);
