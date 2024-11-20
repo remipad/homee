@@ -32,6 +32,24 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <script>
+    
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "177667034415-t8vqvkre632s7lvpr6edfjilgbm0m3vb.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+      google.accounts.id.renderButton(
+        document.getElementById("btnLogin"),
+        { theme: "outline", size: "large", locale: "en" }    
+      );
+      //google.accounts.id.prompt(); //1 Tap dialog
+      document.getElementById('btnLogout').addEventListener('click', function() {
+        console.log('OUT');
+        //google.accounts.id.disableAutoSelect();
+      })
+      
+    }//eo window.onload
+    
     function parseJwt (token) {
       var base64Url = token.split('.')[1];
       var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -58,25 +76,9 @@
       */
 
     }
-    window.onload = function () {
-      google.accounts.id.initialize({
-        client_id: "177667034415-t8vqvkre632s7lvpr6edfjilgbm0m3vb.apps.googleusercontent.com",
-        callback: handleCredentialResponse
-      });
-      google.accounts.id.renderButton(
-        document.getElementById("btnLogin"),
-        { theme: "outline", size: "large", locale: "en" }
-        
-      );
-      //google.accounts.id.prompt(); //1 Tap dialog
-      document.getElementById('button-sign-out').addEventListener('click', function() {
-        google.accounts.id.disableAutoSelect();
-      })
-      
-    }
   </script>
   <div id="btnLogin"></div>
-  <div id="button-sign-out"><span class="button-text">Sign Out</span></div>
+  <div id="btnLogout"><span class="button-text">Sign Out</span></div>
 
   </body>
 </html>
