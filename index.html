@@ -17,6 +17,7 @@
     border: 1px solid transparent;
     color: #fff;
     box-shadow: 1px 1px 1px grey;
+    display:'none';
   }
   
   #btnLogout:hover {
@@ -36,16 +37,14 @@
     window.onload = function () {
       google.accounts.id.initialize({
         client_id: "177667034415-t8vqvkre632s7lvpr6edfjilgbm0m3vb.apps.googleusercontent.com",
-        callback: handleCredentialResponse
+        callback: onGoogleSignIn
       });
       google.accounts.id.renderButton(
         document.getElementById("btnLogin"),
-        { theme: "filled_blue", size: "large", locale: "en-US", shape: "pill"}    
+        { theme: "filled_blue", size: "large", locale: "en-US", shape: "pill",text:"Use with", width: "250" }    
       );
       document.getElementById('btnLogout').addEventListener('click', function() {
-        console.log('OUT');
-        google.accounts.id.disableAutoSelect();
-        google.accounts.id.prompt(); 
+        onGoogleSignout();
       })
       
     }//eo window.onload
@@ -58,11 +57,17 @@
       }).join(''));      
       return JSON.parse(jsonPayload);
     };
-    function onSignout() {
+
+    function onGoogleSignout() {
+      console.log('Google SignedOut');
       google.accounts.id.disableAutoSelect();
+      google.accounts.id.prompt(); 
+      document.getElementById('btnLogin').style.display = 'none'
     }
-    function handleCredentialResponse(response) {
+
+    function onGoogleSignIn(response) {
       var user = JSON.stringify(parseJwt(response.credential));
+      document.getElementById('btnLogin').style.display = 'block'
       console.log(user);
       /*
       const user = decodeJwtResponse(response.credential);
