@@ -5,7 +5,7 @@
   <title>rMiniApp</title>
   <!-- link rel="stylesheet" href="styles.css" -->
   <style>
-  #button-sign-out {
+  #btnLogout {
     font-family: 'Roboto', arial, sans-serif;
     display: inline-block;
     justify-content: center;
@@ -19,7 +19,7 @@
     box-shadow: 1px 1px 1px grey;
   }
   
-  #button-sign-out:hover {
+  #btnLogout:hover {
     cursor: pointer;
   }
   </style>
@@ -42,10 +42,10 @@
         document.getElementById("btnLogin"),
         { theme: "outline", size: "large", locale: "en" }    
       );
-      //google.accounts.id.prompt(); //1 Tap dialog
       document.getElementById('btnLogout').addEventListener('click', function() {
         console.log('OUT');
-        //google.accounts.id.disableAutoSelect();
+        google.accounts.id.disableAutoSelect();
+        google.accounts.id.prompt(); 
       })
       
     }//eo window.onload
