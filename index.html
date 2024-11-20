@@ -33,7 +33,7 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <script>
-    
+    let user={};
     window.onload = function () {
       google.accounts.id.initialize({
         client_id: "177667034415-t8vqvkre632s7lvpr6edfjilgbm0m3vb.apps.googleusercontent.com",
@@ -41,10 +41,12 @@
       });
       google.accounts.id.renderButton(
         document.getElementById("btnLogin"),
-        { theme: "filled_blue", size: "large", locale: "en-US", shape: "pill",text:"Use with", width: "250" }    
+        { theme: "filled_blue", size: "large", locale: "en-US", shape: "pill", text:"Use with" }    
       );
       document.getElementById('btnLogout').addEventListener('click', function() {
         onGoogleSignout();
+        console.log(`Email: $user.email`);
+
       })
       
     }//eo window.onload
@@ -68,11 +70,11 @@
     }
 
     function onGoogleSignIn(response) {
-      var user = JSON.stringify(parseJwt(response.credential));
+      user = JSON.stringify(parseJwt(response.credential));
       document.getElementById('btnLogout').style.display = 'block'
       document.getElementById('btnLogin').style.display = 'none'
 
-      console.log(user);
+      console.log(`Email: $user.email`);
       /*
       const user = decodeJwtResponse(response.credential);
       console.log("ID: " + user.sub);
